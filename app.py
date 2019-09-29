@@ -26,5 +26,19 @@ def close_db(error):
 
 app = Flask(__name__)
 
+
+@app.route('/')
+def show_entries():
+    cur = db.execute('select title,text from entries order by id desc')
+    entries = [dict (title = row[0], text = row [1]) for row in cur.fetchall ()]
+
+    return render_template('show_entries.html, entries')
+
+@app.route('/add', methods = ['POST'])
+def add_entry():
+    if not session.get('logged_in'):
+        abort(401)
+
+
 if __name__ == '__main__':
     app.run()
