@@ -1,10 +1,9 @@
 <!DOCTYPE html>
-<<!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
     <title>Blog</title>
-    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}"
+    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='syle.css') }}">
   </head>
 
   <body>
@@ -14,15 +13,16 @@
           {% if not session.logged_in %}
             <a href="{{ url_for('login') }}">Login</a>
           {% else %}
-            <<a href="{{ url_for('logout')}}">Log Out</a>
+            <a href="{{ url_for('login')}}">Log Out</a>
           {% endif %}
         </div>
-        {% for message in get_flashed_ messages() %}
+        {% for message in get_flashed_messages() %}
         <div class="flash">
             {{ message }}
         </div>
-          {% endfor %}
-          {% block body %}{% endblock %}
+        {% endfor %}
+          
+        {% block body %}{% endblock %}
 
 
     </div>
